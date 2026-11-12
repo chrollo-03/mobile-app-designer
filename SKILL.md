@@ -34,6 +34,10 @@ order (content first, tokens before screens, hardest screen first, one platform 
 Apply them while designing, not as an afterthought: fixing contrast or tap targets after twenty
 screens copy the mistake costs far more than getting the component right once.
 
+**A worked example** lives in `examples/barwise/`: a lifting tracker designed in FigCraft
+(16 screens on iOS and Android, clickable prototype, app icon), its checker spec and a short case
+study. When unsure what "good" looks like for a phase, look there, and run the scripts on it.
+
 ## Phase 1: Brief and data
 
 Start from `templates/BRIEF.template.md` and fill it in as answers arrive. Identify the **app type**

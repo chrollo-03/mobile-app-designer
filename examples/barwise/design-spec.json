@@ -1,0 +1,103 @@
+{
+  "file": "Barwise.figcraft",
+  "page": "Screens",
+  "platforms": {
+    "iOS": {
+      "size": [
+        390,
+        844
+      ]
+    },
+    "Android": {
+      "size": [
+        412,
+        917
+      ]
+    }
+  },
+  "screens": {
+    "1": "Today",
+    "2": "Workout",
+    "3": "Rest",
+    "4": "Summary",
+    "5": "Progress",
+    "6": "Settings",
+    "7": "History",
+    "8": "Workout · dark"
+  },
+  "not_linked": [
+    "8"
+  ],
+  "flows": [
+    {
+      "platform": "iOS",
+      "from": "1",
+      "layer": "Start workout",
+      "to": "2"
+    },
+    {
+      "platform": "Android",
+      "from": "1",
+      "layer": "Start workout",
+      "to": "2"
+    },
+    {
+      "platform": "iOS",
+      "from": "2",
+      "layer": "Log set",
+      "to": "3"
+    },
+    {
+      "platform": "Android",
+      "from": "2",
+      "layer": "Log set",
+      "to": "3"
+    },
+    {
+      "platform": "iOS",
+      "from": "3",
+      "layer": "Skip rest",
+      "to": "2"
+    },
+    {
+      "platform": "Android",
+      "from": "3",
+      "layer": "Skip rest",
+      "to": "2"
+    },
+    {
+      "platform": "iOS",
+      "from": "2",
+      "layer": "Finish button",
+      "to": "4"
+    },
+    {
+      "platform": "Android",
+      "from": "2",
+      "layer": "Finish button",
+      "to": "4"
+    },
+    {
+      "platform": "iOS",
+      "from": "4",
+      "layer": "Done button",
+      "to": "1"
+    },
+    {
+      "platform": "Android",
+      "from": "4",
+      "layer": "Done button",
+      "to": "1"
+    }
+  ],
+  "exports": {
+    "dir": "screens"
+  },
+  "required_files": [
+    "logo/app-icon-1024.png",
+    "logo/mark.svg"
+  ],
+  "no_alpha": [
+    "logo/app-icon-1024.png"
+  ]
+}

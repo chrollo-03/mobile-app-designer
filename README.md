@@ -3,10 +3,16 @@
 A [Claude Code](https://claude.com/claude-code) skill that designs a mobile app end to end and
 hands it off ready to build, by [Chrollo](https://github.com/chrollo-03).
 
+![Example: Barwise, a lifting tracker, 16 screens on iOS and Android](examples/barwise/screens/_overview.png)
+
 It walks Claude through eight phases: **brief and real-data check → design system and colour →
 iOS and Android screens → a clickable prototype with working inputs → app icon and logo →
 automated design checks → a build-ready handoff zip**, with Arabic / right-to-left support
 throughout and professional design rules applied at every step.
+
+The example above, [`examples/barwise`](examples/barwise), was designed with this skill in
+FigCraft: a lifting tracker with 16 screens, a clickable prototype and an app icon. It passes
+every check the skill ships with.
 
 ## What you get
 
@@ -59,12 +65,12 @@ ask to design, prototype, check or package a mobile app, or when you call it by 
 
 > Check my design file design/App.figcraft: every screen on both platforms, contrast and tap targets.
 
-Or run the scripts directly:
+Or run the scripts on the bundled example:
 
 ```bash
 cd ~/.claude/skills/mobile-app-designer
-python3 scripts/check_design.py path/to/design-spec.json
-python3 scripts/audit_design.py path/to/App.figcraft "Screens"
+python3 scripts/check_design.py examples/barwise/design-spec.json
+python3 scripts/audit_design.py examples/barwise/Barwise.figcraft Screens
 python3 scripts/palette.py list && python3 scripts/palette.py preset food-delivery
 xdg-open assets/color-panel.html     # macOS: open, Windows: start
 ```
@@ -79,6 +85,7 @@ references/         loaded per phase: app types, inspiration, design principles,
 scripts/            the six scripts above
 assets/             palettes.json, color-panel.html (+ its template)
 templates/          brief, build prompt, setup, tokens, handoff README, checker spec
+examples/barwise/   a complete design: FigCraft file, screens, icon and checker spec
 evals/              test cases for `claude plugin eval`
 ```
 
