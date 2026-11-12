@@ -13,12 +13,12 @@ jobs:
         with:
           python-version: "3.12"
       - name: Compile scripts
-        run: python -m py_compile scripts/*.py
+        run: python -m py_compile skills/mobile-app-designer/scripts/*.py
       - name: Check the bundled example
         run: |
-          python scripts/check_design.py examples/barwise/design-spec.json
-          python scripts/audit_design.py examples/barwise/Barwise.figcraft Screens
+          python skills/mobile-app-designer/scripts/check_design.py examples/barwise/design-spec.json
+          python skills/mobile-app-designer/scripts/audit_design.py examples/barwise/Barwise.figcraft Screens
       - name: Palette presets
         run: |
-          python scripts/palette.py list
-          python scripts/palette.py preset food-delivery
+          python skills/mobile-app-designer/scripts/palette.py list
+          python skills/mobile-app-designer/scripts/palette.py preset food-delivery

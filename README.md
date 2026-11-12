@@ -15,6 +15,10 @@ checks it like a senior designer, and hands it off ready to build.**
 
 **[Watch the full film (1:02, MP4)](examples/barwise/video/barwise-film.mp4)**: how it was made, then the app in use.
 
+```bash
+npx skills add https://github.com/chrollo-03/mobile-app-designer --skill mobile-app-designer
+```
+
 </div>
 
 ## Made with this skill: Barwise
@@ -29,6 +33,16 @@ prototype, the icon and the checks.
 | 8 per platform, plus dark mode | iOS 390 x 844, Android 412 x 917 | every button and tab linked | design checks passed | contrast or tap-target issues |
 
 ![All 16 screens](examples/barwise/screens/_overview.png)
+
+### The real session: 24 minutes, one take
+
+A screen recording of the FigCraft window while Claude Code designed Barwise, from the first
+iOS screen to the last fix. Idle moments are cut and the rest runs 18x faster; the clock shows
+the real time of every frame.
+
+![24-minute session timelapse](examples/barwise/video/barwise-timelapse.gif)
+
+[Full timelapse (1:25, MP4)](examples/barwise/video/barwise-timelapse.mp4)
 
 ### How it was made
 
@@ -78,7 +92,7 @@ Arabic and right-to-left support runs through every phase.
 
 ## What's inside
 
-- **The workflow** (`SKILL.md`), designed by **app type** with 12 guides: finance, health and
+- **The workflow** (`skills/mobile-app-designer/SKILL.md`), designed by **app type** with 12 guides: finance, health and
   fitness, wellness, food and delivery, e-commerce, social, productivity, travel, education,
   media, booking, utility.
 - **Design rules with reasons** (`references/design-principles.md`): 8-pt grid, type scale,
@@ -102,14 +116,38 @@ Arabic and right-to-left support runs through every phase.
 
 ## Install
 
-A Claude Code skill is a folder with a `SKILL.md`. Clone it into your skills folder:
+**Claude Code** (plugin marketplace):
 
-```bash
-git clone https://github.com/chrollo-03/mobile-app-designer ~/.claude/skills/mobile-app-designer
+```text
+/plugin marketplace add chrollo-03/mobile-app-designer
+/plugin install mobile-app-designer@mobile-app-designer
 ```
 
-(or into `.claude/skills/` inside one project). Restart Claude Code; the skill triggers when you
-ask to design, prototype, check or package a mobile app, or when you call it by name.
+On Claude Code 2.1.275 or later it is one step:
+`/plugin install mobile-app-designer --marketplace chrollo-03/mobile-app-designer`.
+To update it later: `/plugin marketplace update mobile-app-designer`.
+
+**Any agent with Agent Skills** (Claude Code, Codex, Cursor, Copilot, Gemini CLI, opencode and more),
+one command with the [`skills`](https://github.com/vercel-labs/skills) CLI:
+
+```bash
+npx skills add https://github.com/chrollo-03/mobile-app-designer --skill mobile-app-designer
+```
+
+Add `-g` to install it globally; leave it out to scope it to the current project.
+
+<details>
+<summary>No installer? Copy the skill folder.</summary>
+
+```bash
+git clone --depth 1 https://github.com/chrollo-03/mobile-app-designer /tmp/mobile-app-designer
+cp -r /tmp/mobile-app-designer/skills/mobile-app-designer ~/.claude/skills/
+```
+
+Restart Claude Code after copying.
+</details>
+
+Then ask to design, prototype, check or package a mobile app, or call `/mobile-app-designer`.
 
 ## Try it
 
@@ -123,25 +161,28 @@ ask to design, prototype, check or package a mobile app, or when you call it by 
 Or run the checks on the bundled example:
 
 ```bash
-cd ~/.claude/skills/mobile-app-designer
-python3 scripts/check_design.py examples/barwise/design-spec.json          # 137 passed, 0 failed
-python3 scripts/audit_design.py examples/barwise/Barwise.figcraft Screens   # 0 issues
-python3 scripts/palette.py list && python3 scripts/palette.py preset health-fitness
-xdg-open assets/color-panel.html     # macOS: open, Windows: start
+git clone https://github.com/chrollo-03/mobile-app-designer && cd mobile-app-designer
+S=skills/mobile-app-designer
+python3 $S/scripts/check_design.py examples/barwise/design-spec.json          # 137 passed, 0 failed
+python3 $S/scripts/audit_design.py examples/barwise/Barwise.figcraft Screens   # 0 issues
+python3 $S/scripts/palette.py list && python3 $S/scripts/palette.py preset health-fitness
+xdg-open $S/assets/color-panel.html     # macOS: open, Windows: start
 ```
 
 ## Layout
 
 ```
-SKILL.md            the workflow
-references/         loaded per phase: app types, inspiration, design principles, colour,
-                    install FigCraft, FigCraft recipes, other tools, design system, prototype,
-                    RTL/Arabic, logo, checks, handoff
-scripts/            the six scripts above
-assets/             palettes.json, color-panel.html (+ its template)
-templates/          brief, build prompt, setup, tokens, handoff README, checker spec
-examples/barwise/   a complete design: FigCraft file, screens, icon, checker spec, videos
-evals/              test cases for `claude plugin eval`
+skills/mobile-app-designer/   the skill
+  SKILL.md                    the workflow
+  references/                 loaded per phase: app types, inspiration, design principles, colour,
+                              install FigCraft, FigCraft recipes, other tools, design system,
+                              prototype, RTL/Arabic, logo, checks, handoff
+  scripts/                    the six scripts above
+  assets/                     palettes.json, color-panel.html (+ its template)
+  templates/                  brief, build prompt, setup, tokens, handoff README, checker spec
+examples/barwise/             a complete design: FigCraft file, screens, icon, checker spec, videos
+evals/                        test cases for `claude plugin eval`
+.claude-plugin/, plugin.json  plugin and marketplace manifests
 ```
 
 ## Test cases
@@ -152,6 +193,16 @@ real (billed) model runs with and without the skill:
 ```bash
 claude plugin eval . --allow-tools Write,Edit,Bash --scaffold
 ```
+
+## Star history
+
+<a href="https://www.star-history.com/#chrollo-03/mobile-app-designer&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=chrollo-03/mobile-app-designer&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=chrollo-03/mobile-app-designer&type=Date" />
+   <img alt="Star history chart" src="https://api.star-history.com/svg?repos=chrollo-03/mobile-app-designer&type=Date" />
+ </picture>
+</a>
 
 ## License
 

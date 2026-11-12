@@ -59,7 +59,7 @@ Font: Inter on both platforms.
 
 ## Check it yourself
 ```bash
-python3 scripts/check_design.py examples/barwise/design-spec.json      # 137 passed, 0 failed
-python3 scripts/audit_design.py examples/barwise/Barwise.figcraft Screens   # 0 issues
-python3 scripts/extract_tokens.py examples/barwise/Barwise.figcraft Screens "iOS /"
+python3 skills/mobile-app-designer/scripts/check_design.py examples/barwise/design-spec.json      # 137 passed, 0 failed
+python3 skills/mobile-app-designer/scripts/audit_design.py examples/barwise/Barwise.figcraft Screens   # 0 issues
+python3 skills/mobile-app-designer/scripts/extract_tokens.py examples/barwise/Barwise.figcraft Screens "iOS /"
 ```

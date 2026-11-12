@@ -1,0 +1,15 @@
+{
+  "name": "mobile-app-designer",
+  "description": "Design a mobile app end to end and hand it off ready to build.",
+  "owner": {
+    "name": "chrollo-03",
+    "url": "https://github.com/chrollo-03"
+  },
+  "plugins": [
+    {
+      "name": "mobile-app-designer",
+      "source": "./",
+      "description": "Design a mobile app end to end in FigCraft, Figma or HTML: iOS and Android screens, clickable prototype, icon, automated design checks and a build-ready handoff."
+    }
+  ]
+}

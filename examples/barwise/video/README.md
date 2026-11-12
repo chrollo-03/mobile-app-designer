@@ -7,11 +7,12 @@ tap dot on every button the prototype links.
 The frames are the real FigCraft screens exported at 3x and animated with
 [Remotion](https://www.remotion.dev). The phone is a drawn frame, not a recording from a device.
 
+- `barwise-timelapse.mp4` / `.gif`: the real 24:07 screen recording of the session, idle moments cut, 18x faster, with chapters and the real clock (`src/Timelapse.tsx`, `src/keptTimes.json`)
 - `barwise-film.mp4`: the two videos below joined, 1:02
 - `barwise-making-of.mp4` / `.gif`: 29 s timelapse of Claude Code rebuilding the Rest screen in FigCraft over MCP, from 12 real captures of the FigCraft window (`build-frames/`)
 - `barwise-walkthrough.mp4`: 1920 x 1080, 30 fps, H.264
 - `barwise-walkthrough.gif`: 720 px preview for the README
-- `src/`: the Remotion compositions (`Walkthrough.tsx`, `MakingOf.tsx`, `Composition.tsx`)
+- `src/`: the Remotion compositions (`Walkthrough.tsx`, `MakingOf.tsx`, `Timelapse.tsx`, `Composition.tsx`)
 
 ## Render it yourself
 

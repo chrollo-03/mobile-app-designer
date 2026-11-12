@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mobile-app-designer",
+  "version": "1.1.0",
+  "description": "Design a mobile app end to end in FigCraft, Figma or HTML: iOS and Android screens, clickable prototype, icon, automated design checks and a build-ready handoff.",
+  "author": {
+    "name": "chrollo-03",
+    "url": "https://github.com/chrollo-03"
+  },
+  "homepage": "https://github.com/chrollo-03/mobile-app-designer",
+  "repository": "https://github.com/chrollo-03/mobile-app-designer",
+  "license": "MIT",
+  "keywords": ["mobile", "design", "figcraft", "ios", "android", "prototype", "accessibility", "rtl", "skill"]
+}
