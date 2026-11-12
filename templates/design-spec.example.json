@@ -1,0 +1,29 @@
+{
+  "file": "design/App.figcraft",
+  "page": "Screens",
+  "platforms": {
+    "iOS": {"size": [390, 844]},
+    "Android": {"size": [412, 917]}
+  },
+  "screens": {
+    "1": "Home",
+    "2": "Search results",
+    "3": "Detail",
+    "4": "Empty state",
+    "5": "Settings"
+  },
+  "platform_screens": {
+    "iOS": {"6": "Detail · dark"},
+    "Android": {"6": "Home · dark"}
+  },
+  "not_linked": ["1", "6"],
+  "overlay_prefix": "Overlay / ",
+  "flows": [
+    {"platform": "iOS", "from": "1", "layer": "Settings button", "to": "5"},
+    {"platform": "Android", "from": "1", "layer": "Settings button", "to": "5"}
+  ],
+  "defaults": {"language": "English", "appearance": "Auto"},
+  "exports": {"dir": "design/screens", "pattern": "{platform}-{num}-{name}.png"},
+  "required_files": ["design/logo/app-icon-1024.png", "design/logo/mark.svg"],
+  "no_alpha": ["design/logo/app-icon-1024.png"]
+}

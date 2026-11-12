@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colour Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0F172A; --muted:#5B6474; --line:#E6E8EC; --paper:#FFFFFF; --soft:#F6F7F9; --focus:#1D4ED8; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:15px/1.5 Inter, system-ui, sans-serif; color:var(--ink); background:var(--soft); }
+  header { padding:32px 32px 8px; max-width:1360px; margin:0 auto; }
+  h1 { font-size:32px; letter-spacing:-0.02em; margin:0 0 4px; }
+  header p { margin:0; color:var(--muted); }
+  main { max-width:1360px; margin:0 auto; padding:16px 32px 48px; display:grid; grid-template-columns:320px 1fr; gap:24px; }
+  .card { background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:16px; }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:0 0 12px; font-weight:600; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
+  .chip { border:1px solid var(--line); background:var(--paper); border-radius:999px; padding:6px 12px; font:500 13px Inter; cursor:pointer; min-height:32px; }
+  .chip[aria-pressed=true] { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .presets { display:flex; flex-direction:column; gap:8px; max-height:520px; overflow:auto; }
+  .preset { flex-shrink:0; text-align:left; border:1px solid var(--line); background:var(--paper); border-radius:12px; padding:10px 12px; cursor:pointer; font:inherit; color:inherit; display:grid; grid-template-columns:auto 1fr; gap:4px 12px; align-items:center; min-height:48px; }
+  .preset[aria-pressed=true] { border-color:var(--focus); box-shadow:0 0 0 2px #1D4ED833; }
+  .dots { display:flex; gap:3px; grid-row:span 2; }
+  .dots i { width:16px; height:32px; border-radius:5px; display:block; }
+  .preset b { font-weight:600; font-size:14px; }
+  .preset small { color:var(--muted); font-size:12px; }
+  .row { display:flex; gap:8px; align-items:center; margin:8px 0; }
+  .row label { width:64px; color:var(--muted); font-size:13px; }
+  input[type=color] { flex-shrink:0; width:44px; height:44px; border:1px solid var(--line); border-radius:10px; padding:2px; background:#fff; cursor:pointer; }
+  input[type=text] { flex:1; min-width:0; height:44px; border:1px solid var(--line); border-radius:10px; padding:0 12px; font:500 14px ui-monospace, monospace; }
+  .why { color:var(--muted); font-size:13px; margin:8px 0 0; }
+  .stage { display:grid; grid-template-columns:repeat(2, minmax(260px, 1fr)) minmax(300px, 1.2fr); gap:24px; align-items:start; }
+  .phone { border-radius:36px; padding:10px; background:#0B0B0F; box-shadow:0 20px 50px #0F172A26; }
+  .screen { border-radius:28px; overflow:hidden; height:600px; display:flex; flex-direction:column; }
+  .bar { padding:14px 20px 6px; font:600 13px Inter; display:flex; justify-content:space-between; }
+  .hero { padding:12px 20px 20px; }
+  .hero h3 { margin:4px 0 12px; font-size:26px; letter-spacing:-0.02em; }
+  .field { height:48px; border-radius:12px; display:flex; align-items:center; padding:0 14px; gap:10px; font-size:15px; }
+  .body { padding:16px 20px; flex:1; display:flex; flex-direction:column; gap:12px; }
+  .seg { display:flex; padding:3px; border-radius:999px; }
+  .seg span { flex:1; text-align:center; padding:8px; border-radius:999px; font:600 13px Inter; }
+  .list { border-radius:16px; overflow:hidden; }
+  .item { display:flex; gap:12px; align-items:center; padding:12px 14px; }
+  .av { width:36px; height:36px; border-radius:50%; display:grid; place-items:center; font:700 14px Inter; }
+  .item div small { display:block; font-size:12px; }
+  .btn { height:52px; border-radius:26px; display:grid; place-items:center; font:600 15px Inter; margin-top:auto; }
+  .tags { display:flex; gap:8px; }
+  .tag { padding:6px 12px; border-radius:999px; font:600 12px Inter; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  td, th { padding:6px 4px; border-bottom:1px solid var(--line); text-align:left; }
+  th { color:var(--muted); font-weight:600; font-size:12px; }
+  .sw { width:22px; height:22px; border-radius:6px; border:1px solid #0000001a; display:inline-block; vertical-align:middle; margin-right:6px; }
+  code { font:12px ui-monospace, monospace; }
+  .ok { color:#0A7C3E; font-weight:600; } .bad { color:#B42318; font-weight:700; }
+  .ramp { display:grid; grid-template-columns:repeat(11, 1fr); gap:2px; margin-bottom:6px; }
+  .ramp i { height:22px; border-radius:4px; display:block; }
+  .ramp-l { font-size:12px; color:var(--muted); margin:6px 0 2px; }
+  .exports { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+  .exports button { border:1px solid var(--ink); background:var(--ink); color:#fff; border-radius:999px; padding:8px 14px; font:600 13px Inter; cursor:pointer; min-height:40px; }
+  .exports button.ghost { background:#fff; color:var(--ink); }
+  pre { background:#0F172A; color:#E2E8F0; border-radius:12px; padding:12px; max-height:220px; overflow:auto; font-size:12px; white-space:pre-wrap; }
+  .score { display:flex; gap:16px; margin:4px 0 12px; }
+  .score div b { font-size:28px; letter-spacing:-0.02em; display:block; line-height:1.1; }
+  .score div span { color:var(--muted); font-size:12px; }
+  @media (max-width: 1100px) { main { grid-template-columns:1fr; } .stage { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Colour Panel</h1>
+  <p>Pick a curated palette by app type or start from your brand colour. Every role is generated for light and dark and checked against WCAG 2.2 AA.</p>
+</header>
+<main>
+  <aside class="card">
+    <h2>Curated by app type</h2>
+    <div class="chips" id="moods"></div>
+    <div class="presets" id="presets"></div>
+    <h2 style="margin-top:20px">Your brand</h2>
+    <div class="row"><label for="seedC">Primary</label><input type="color" id="seedC"><input type="text" id="seedT" aria-label="Primary hex"></div>
+    <div class="row"><label for="accC">Accent</label><input type="color" id="accC"><input type="text" id="accT" aria-label="Accent hex" placeholder="auto"></div>
+    <p class="why" id="why"></p>
+  </aside>
+  <section>
+    <div class="stage">
+      <div><h2>Light</h2><div class="phone"><div class="screen" id="light"></div></div></div>
+      <div><h2>Dark</h2><div class="phone"><div class="screen" id="dark"></div></div></div>
+      <div class="card">
+        <h2>Contrast</h2>
+        <div class="score" id="score"></div>
+        <table id="pairs"></table>
+        <h2 style="margin-top:16px">Tonal ramps</h2>
+        <div id="ramps"></div>
+        <h2 style="margin-top:16px">Export</h2>
+        <div class="exports">
+          <button data-f="css">Copy CSS</button><button data-f="compose" class="ghost">Compose</button><button data-f="json" class="ghost">JSON</button>
+        </div>
+        <pre id="out" hidden></pre>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const PRESETS = [{"id": "finance", "name": "Ledger Blue", "appType": "Finance & banking", "seed": "#1F4FD1", "accent": "#12B886", "mood": "trust, calm, precise", "why": "Deep blue reads as stable and secure; a green accent carries 'money in / positive'. Keep red strictly for losses and errors."}, {"id": "health-fitness", "name": "Pulse Green", "appType": "Health & fitness", "seed": "#1E9E6A", "accent": "#FF7A45", "mood": "energetic, healthy, encouraging", "why": "Green signals health and progress; a warm orange accent gives energy to goals and streaks without alarming like red."}, {"id": "wellness", "name": "Sage Calm", "appType": "Meditation & wellness", "seed": "#5E8B6E", "accent": "#C9A227", "mood": "quiet, warm, slow", "why": "Low-chroma sage lowers arousal; a muted gold accent feels warm, not loud. Prefer generous whitespace and dark mode."}, {"id": "food-delivery", "name": "Tomato", "appType": "Food & delivery", "seed": "#E8452C", "accent": "#FFB020", "mood": "appetite, urgency, warmth", "why": "Red-orange stimulates appetite and urgency; amber accent for ratings and promos. Food photos carry the colour, so keep surfaces neutral."}, {"id": "ecommerce", "name": "Shop Violet", "appType": "E-commerce & retail", "seed": "#6C4CF5", "accent": "#FF5C8A", "mood": "modern, playful, confident", "why": "A saturated violet stands out on product grids without clashing with product photos; pink accent for sales and badges."}, {"id": "social", "name": "Signal Blue", "appType": "Social & messaging", "seed": "#3D7CFF", "accent": "#FF4D8D", "mood": "friendly, open, lively", "why": "Bright blue is neutral enough for long sessions of user content; pink for reactions and notifications."}, {"id": "productivity", "name": "Focus Indigo", "appType": "Productivity & tools", "seed": "#4F46E5", "accent": "#F59E0B", "mood": "focused, capable, uncluttered", "why": "Indigo feels serious and modern; amber accent marks priority and due dates. Mostly neutral UI so content leads."}, {"id": "travel-mobility", "name": "Lagoon", "appType": "Travel, maps & mobility", "seed": "#0E8A9A", "accent": "#FFB547", "mood": "open, adventurous, clear", "why": "Teal evokes sea and sky and stays readable on maps; a sunny accent for deals and active trips."}, {"id": "education", "name": "Bright Learn", "appType": "Education & kids", "seed": "#7B5CFA", "accent": "#FFC93C", "mood": "curious, rewarding, friendly", "why": "Purple feels imaginative; yellow for rewards and progress. Keep text contrast high for young and new readers."}, {"id": "media", "name": "Night Screen", "appType": "Media & streaming", "seed": "#E3334B", "accent": "#7C5CFF", "mood": "cinematic, immersive, bold", "why": "Design dark-first so artwork glows; one bold red for play and live states, violet for secondary highlights."}, {"id": "real-estate-booking", "name": "Evergreen", "appType": "Real estate, booking & hospitality", "seed": "#2F6B55", "accent": "#E9A23B", "mood": "premium, grounded, welcoming", "why": "Deep green feels established and natural; brass accent signals premium. Large photos, quiet chrome."}, {"id": "utility-lookup", "name": "Electric Lookup", "appType": "Utility, search & lookup", "seed": "#3355FF", "accent": "#D4F25C", "mood": "fast, technical, confident", "why": "Electric blue to violet hero with a lime accent for the one main action. High contrast for scanning results."}, {"id": "premium-neutral", "name": "Ink & Blue", "appType": "Premium SaaS / marketing-style apps", "seed": "#1D4ED8", "accent": "#0F172A", "mood": "editorial, premium, restrained", "why": "Webflow-like restraint: near-black ink, white space, one confident blue for actions. Let typography and product shots do the work."}];
+// ---- colour math: same as scripts/palette.py (CIE LCh tones, sRGB gamut search) ----
+const WHITE=[0.95047,1,1.08883];
+const lin=c=>c<=0.04045?c/12.92:((c+0.055)/1.055)**2.4, gam=c=>c<=0.0031308?12.92*c:1.055*c**(1/2.4)-0.055;
+const hex2rgb=h=>{h=h.replace('#','');if(h.length===3)h=[...h].map(c=>c+c).join('');return[0,2,4].map(i=>parseInt(h.slice(i,i+2),16)/255)};
+const rgb2hex=r=>'#'+r.map(c=>Math.round(Math.min(1,Math.max(0,c))*255).toString(16).padStart(2,'0')).join('').toUpperCase();
+function rgb2lch(rgb){const[r,g,b]=rgb.map(lin);const xyz=[0.4124564*r+0.3575761*g+0.1804375*b,0.2126729*r+0.7151522*g+0.0721750*b,0.0193339*r+0.1191920*g+0.9503041*b];
+  const f=xyz.map((v,i)=>{const t=v/WHITE[i];return t>216/24389?Math.cbrt(t):(24389/27*t+16)/116});
+  const L=116*f[1]-16,a=500*(f[0]-f[1]),bb=200*(f[1]-f[2]);return[L,Math.hypot(a,bb),((Math.atan2(bb,a)*180/Math.PI)+360)%360]}
+function lch2rgb(L,C,H){const a=C*Math.cos(H*Math.PI/180),b=C*Math.sin(H*Math.PI/180),fy=(L+16)/116,fx=fy+a/500,fz=fy-b/200;
+  const inv=[fx,fy,fz].map(t=>t**3>216/24389?t**3:(116*t-16)/(24389/27));const[x,y,z]=inv.map((v,i)=>v*WHITE[i]);
+  const lr=[3.2404542*x-1.5371385*y-0.4985314*z,-0.9692660*x+1.8760108*y+0.0415560*z,0.0556434*x-0.2040259*y+1.0572252*z];
+  return[lr.map(c=>c>0?gam(c):0),lr.every(c=>c>=-1e-4&&c<=1+1e-4)]}
+function tone(h,c,t){if(t<=0)return'#000000';if(t>=100)return'#FFFFFF';let lo=0,hi=c;let[rgb,ok]=lch2rgb(t,hi,h);if(ok)return rgb2hex(rgb);
+  for(let i=0;i<24;i++){const m=(lo+hi)/2;if(lch2rgb(t,m,h)[1])lo=m;else hi=m}return rgb2hex(lch2rgb(t,lo,h)[0])}
+const lum=h=>{const[r,g,b]=hex2rgb(h).map(lin);return 0.2126*r+0.7152*g+0.0722*b};
+const contrast=(a,b)=>{const[x,y]=[lum(a),lum(b)].sort((p,q)=>q-p);return(x+0.05)/(y+0.05)};
+const ROLES={primary:['primary',40,80],onPrimary:['primary',100,20],primaryContainer:['primary',90,30],onPrimaryContainer:['primary',10,90],
+ secondary:['secondary',40,80],onSecondary:['secondary',100,20],secondaryContainer:['secondary',90,30],onSecondaryContainer:['secondary',10,90],
+ tertiary:['tertiary',40,80],onTertiary:['tertiary',100,20],tertiaryContainer:['tertiary',90,30],onTertiaryContainer:['tertiary',10,90],
+ error:['error',40,80],onError:['error',100,20],errorContainer:['error',90,30],onErrorContainer:['error',10,90],
+ background:['neutral',98,6],onBackground:['neutral',10,90],surface:['neutral',98,6],onSurface:['neutral',10,90],
+ surfaceContainerLow:['neutral',96,10],surfaceContainer:['neutral',94,12],surfaceContainerHigh:['neutral',92,17],surfaceContainerHighest:['neutral',90,22],
+ surfaceVariant:['neutralVariant',90,30],onSurfaceVariant:['neutralVariant',30,80],outline:['neutralVariant',50,60],outlineVariant:['neutralVariant',80,30],
+ inverseSurface:['neutral',20,90],inverseOnSurface:['neutral',95,20],inversePrimary:['primary',80,40]};
+const PAIRS=[['onPrimary','primary',4.5,'button text'],['onPrimaryContainer','primaryContainer',4.5,'tonal button'],['onSecondaryContainer','secondaryContainer',4.5,'selected item'],
+ ['onTertiaryContainer','tertiaryContainer',4.5,'accent container'],['onError','error',4.5,'error button'],['onSurface','surface',4.5,'body text'],
+ ['onSurfaceVariant','surface',4.5,'secondary text'],['onSurfaceVariant','surfaceContainerHighest',4.5,'text on cards'],['primary','surface',4.5,'links'],
+ ['error','surface',4.5,'error text'],['outline','surface',3,'borders, icons']];
+function scheme(seed,accent){let[,c,h]=rgb2lch(hex2rgb(seed));c=Math.max(c,36);let ac,ah;if(accent){[,ac,ah]=rgb2lch(hex2rgb(accent))}else{ac=c*0.8;ah=(h+60)%360}
+  const spec={primary:[h,c],secondary:[h,c/3],tertiary:[ah,Math.max(ac,24)],neutral:[h,4],neutralVariant:[h,8],error:[25,80]};
+  const T=[10,20,30,40,50,60,70,80,90,95,99],need=[0,6,10,12,17,20,22,30,40,50,60,80,90,92,94,95,96,98,100];
+  const rp={};for(const[k,[hh,cc]]of Object.entries(spec)){rp[k]={};for(const t of new Set([...T,...need]))rp[k][t]=tone(hh,cc,t)}
+  const s={light:{},dark:{}};for(const[r,[ramp,l,d]]of Object.entries(ROLES)){s.light[r]=rp[ramp][l];s.dark[r]=rp[ramp][d]}return{rp,s,T}}
+// ---- UI ----
+const $=id=>document.getElementById(id);let state={seed:'#3355FF',accent:'#D4F25C',name:'Custom',id:null,mood:'all'};
+function phone(el,m){el.style.background=m.surface;el.style.color=m.onSurface;el.innerHTML=`
+  <div class="bar" style="color:${m.onPrimary};background:${m.primary}"><span>9:41</span><span>●●●</span></div>
+  <div class="hero" style="background:${m.primary};color:${m.onPrimary}">
+    <small style="opacity:.9">Good morning</small><h3>Find anything.</h3>
+    <div class="field" style="background:${m.surface};color:${m.onSurfaceVariant}">⌕ Search</div></div>
+  <div class="body">
+    <div class="seg" style="background:${m.surfaceContainerHighest}"><span style="background:${m.secondaryContainer};color:${m.onSecondaryContainer}">Today</span><span style="color:${m.onSurfaceVariant}">Week</span><span style="color:${m.onSurfaceVariant}">Month</span></div>
+    <div class="tags"><span class="tag" style="background:${m.tertiaryContainer};color:${m.onTertiaryContainer}">New</span><span class="tag" style="background:${m.primaryContainer};color:${m.onPrimaryContainer}">Saved</span><span class="tag" style="background:${m.errorContainer};color:${m.onErrorContainer}">Overdue</span></div>
+    <div class="list" style="background:${m.surfaceContainerLow};border:1px solid ${m.outlineVariant}">
+      ${['Morning run|5 km · 28 min','Read 20 pages|Habit · streak 12','Pay rent|Due Friday'].map((t,i)=>{const[a,b]=t.split('|');return`<div class="item" style="${i?`border-top:1px solid ${m.outlineVariant}`:''}"><span class="av" style="background:${[m.primaryContainer,m.tertiaryContainer,m.secondaryContainer][i]};color:${[m.onPrimaryContainer,m.onTertiaryContainer,m.onSecondaryContainer][i]}">${a[0]}</span><div>${a}<small style="color:${m.onSurfaceVariant}">${b}</small></div></div>`}).join('')}
+    </div>
+    <a style="color:${m.primary};font-weight:600;font-size:14px">See all activity →</a>
+    <div class="btn" style="background:${m.primary};color:${m.onPrimary}">Continue</div></div>`}
+function render(){const{rp,s,T}=scheme(state.seed,state.accent||null);phone($('light'),s.light);phone($('dark'),s.dark);
+  let pass=0,total=0,rows='<tr><th>Pair</th><th>Light</th><th>Dark</th></tr>';
+  for(const[fg,bg,need,why]of PAIRS){const cell=m=>{const r=contrast(s[m][fg],s[m][bg]);total++;if(r>=need)pass++;return`<td><span class="sw" style="background:${s[m][bg]};box-shadow:inset 0 0 0 6px ${s[m][bg]};outline:3px solid ${s[m][fg]};outline-offset:-9px"></span><span class="${r>=need?'ok':'bad'}">${r.toFixed(2)}</span></td>`};
+    rows+=`<tr><td>${why}<br><code>${fg}</code></td>${cell('light')}${cell('dark')}</tr>`}
+  $('pairs').innerHTML=rows;$('score').innerHTML=`<div><b>${pass}/${total}</b><span>pairs pass AA</span></div><div><b>${state.seed}</b><span>${state.name}</span></div>`;
+  $('ramps').innerHTML=Object.entries(rp).map(([k,r])=>`<div class="ramp-l">${k}</div><div class="ramp">${T.map(t=>`<i title="${k} ${t}: ${r[t]}" style="background:${r[t]}"></i>`).join('')}</div>`).join('');
+  state.scheme=s;$('seedC').value=state.seed;$('seedT').value=state.seed;if(state.accent){$('accC').value=state.accent;$('accT').value=state.accent}else{$('accT').value=''}}
+function exportAs(f){const s=state.scheme;const kebab=k=>k.replace(/[A-Z]/g,c=>'-'+c.toLowerCase());let t='';
+  if(f==='css')t=`:root {\n${Object.entries(s.light).map(([k,v])=>`  --color-${kebab(k)}: ${v};`).join('\n')}\n}\n@media (prefers-color-scheme: dark) {\n  :root {\n${Object.entries(s.dark).map(([k,v])=>`    --color-${kebab(k)}: ${v};`).join('\n')}\n  }\n}`;
+  if(f==='compose'){const b=(n,m)=>`val ${n} = ${n.startsWith('Light')?'light':'dark'}ColorScheme(\n${Object.entries(m).filter(([k])=>!k.startsWith('surfaceContainer')).map(([k,v])=>`    ${k} = Color(0xFF${v.slice(1)})`).join(',\n')},\n)`;t=b('LightColors',s.light)+'\n\n'+b('DarkColors',s.dark)}
+  if(f==='json')t=JSON.stringify({name:state.name,color:Object.fromEntries(['light','dark'].map(m=>[m,Object.fromEntries(Object.entries(s[m]).map(([k,v])=>[k,{$type:'color',$value:v}]))]))},null,2);
+  $('out').hidden=false;$('out').textContent=t;navigator.clipboard&&navigator.clipboard.writeText(t).catch(()=>{})}
+function presets(){const moods=['all',...new Set(PRESETS.flatMap(p=>p.mood.split(', ')))].slice(0,10);
+  $('moods').innerHTML=moods.map(m=>`<button class="chip" aria-pressed="${state.mood===m}" data-m="${m}">${m}</button>`).join('');
+  const list=PRESETS.filter(p=>state.mood==='all'||p.mood.includes(state.mood));
+  $('presets').innerHTML=list.map(p=>{const{s}=scheme(p.seed,p.accent);return`<button class="preset" aria-pressed="${state.id===p.id}" data-id="${p.id}">
+    <span class="dots"><i style="background:${s.light.primary}"></i><i style="background:${s.light.tertiaryContainer}"></i><i style="background:${s.dark.surface}"></i></span>
+    <b>${p.name}</b><small>${p.appType}</small></button>`}).join('')}
+document.addEventListener('click',e=>{const p=e.target.closest('.preset'),c=e.target.closest('.chip'),x=e.target.closest('.exports button');
+  if(p){const pr=PRESETS.find(q=>q.id===p.dataset.id);Object.assign(state,{seed:pr.seed,accent:pr.accent||'',name:pr.name,id:pr.id});$('why').textContent=pr.why;presets();render()}
+  if(c){state.mood=c.dataset.m;presets()} if(x)exportAs(x.dataset.f)});
+const setSeed=(v,k)=>{if(/^#?[0-9a-f]{6}$/i.test(v)){state[k]=('#'+v.replace('#','')).toUpperCase();state.name='Custom';state.id=null;$('why').textContent='';presets();render()}};
+$('seedC').oninput=e=>setSeed(e.target.value,'seed');$('seedT').onchange=e=>setSeed(e.target.value,'seed');
+$('accC').oninput=e=>setSeed(e.target.value,'accent');$('accT').onchange=e=>{if(!e.target.value){state.accent='';render()}else setSeed(e.target.value,'accent')};
+const first=PRESETS.find(p=>p.id==='utility-lookup')||PRESETS[0];if(first)Object.assign(state,{seed:first.seed,accent:first.accent||'',name:first.name,id:first.id}),$('why').textContent=first.why||'';
+presets();render();
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "about": "Curated starting palettes by app type. Each preset is a seed (primary hue) and an optional accent; palette.py turns them into full light + dark Material-style roles and checks WCAG AA. Run `python3 scripts/palette.py check` after editing. Pick by the feeling the product needs, then adjust the seed to the brand.",
+  "presets": [
+    {"id": "finance", "name": "Ledger Blue", "appType": "Finance & banking", "seed": "#1F4FD1", "accent": "#12B886",
+     "mood": "trust, calm, precise", "why": "Deep blue reads as stable and secure; a green accent carries 'money in / positive'. Keep red strictly for losses and errors."},
+    {"id": "health-fitness", "name": "Pulse Green", "appType": "Health & fitness", "seed": "#1E9E6A", "accent": "#FF7A45",
+     "mood": "energetic, healthy, encouraging", "why": "Green signals health and progress; a warm orange accent gives energy to goals and streaks without alarming like red."},
+    {"id": "wellness", "name": "Sage Calm", "appType": "Meditation & wellness", "seed": "#5E8B6E", "accent": "#C9A227",
+     "mood": "quiet, warm, slow", "why": "Low-chroma sage lowers arousal; a muted gold accent feels warm, not loud. Prefer generous whitespace and dark mode."},
+    {"id": "food-delivery", "name": "Tomato", "appType": "Food & delivery", "seed": "#E8452C", "accent": "#FFB020",
+     "mood": "appetite, urgency, warmth", "why": "Red-orange stimulates appetite and urgency; amber accent for ratings and promos. Food photos carry the colour, so keep surfaces neutral."},
+    {"id": "ecommerce", "name": "Shop Violet", "appType": "E-commerce & retail", "seed": "#6C4CF5", "accent": "#FF5C8A",
+     "mood": "modern, playful, confident", "why": "A saturated violet stands out on product grids without clashing with product photos; pink accent for sales and badges."},
+    {"id": "social", "name": "Signal Blue", "appType": "Social & messaging", "seed": "#3D7CFF", "accent": "#FF4D8D",
+     "mood": "friendly, open, lively", "why": "Bright blue is neutral enough for long sessions of user content; pink for reactions and notifications."},
+    {"id": "productivity", "name": "Focus Indigo", "appType": "Productivity & tools", "seed": "#4F46E5", "accent": "#F59E0B",
+     "mood": "focused, capable, uncluttered", "why": "Indigo feels serious and modern; amber accent marks priority and due dates. Mostly neutral UI so content leads."},
+    {"id": "travel-mobility", "name": "Lagoon", "appType": "Travel, maps & mobility", "seed": "#0E8A9A", "accent": "#FFB547",
+     "mood": "open, adventurous, clear", "why": "Teal evokes sea and sky and stays readable on maps; a sunny accent for deals and active trips."},
+    {"id": "education", "name": "Bright Learn", "appType": "Education & kids", "seed": "#7B5CFA", "accent": "#FFC93C",
+     "mood": "curious, rewarding, friendly", "why": "Purple feels imaginative; yellow for rewards and progress. Keep text contrast high for young and new readers."},
+    {"id": "media", "name": "Night Screen", "appType": "Media & streaming", "seed": "#E3334B", "accent": "#7C5CFF",
+     "mood": "cinematic, immersive, bold", "why": "Design dark-first so artwork glows; one bold red for play and live states, violet for secondary highlights."},
+    {"id": "real-estate-booking", "name": "Evergreen", "appType": "Real estate, booking & hospitality", "seed": "#2F6B55", "accent": "#E9A23B",
+     "mood": "premium, grounded, welcoming", "why": "Deep green feels established and natural; brass accent signals premium. Large photos, quiet chrome."},
+    {"id": "utility-lookup", "name": "Electric Lookup", "appType": "Utility, search & lookup", "seed": "#3355FF", "accent": "#D4F25C",
+     "mood": "fast, technical, confident", "why": "Electric blue to violet hero with a lime accent for the one main action. High contrast for scanning results."},
+    {"id": "premium-neutral", "name": "Ink & Blue", "appType": "Premium SaaS / marketing-style apps", "seed": "#1D4ED8", "accent": "#0F172A",
+     "mood": "editorial, premium, restrained", "why": "Webflow-like restraint: near-black ink, white space, one confident blue for actions. Let typography and product shots do the work."}
+  ]
+}

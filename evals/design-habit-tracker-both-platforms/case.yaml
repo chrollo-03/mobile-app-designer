@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: design-habit-tracker-both-platforms
+expected_outcome: |
+  With no design tool available, the run makes HTML mockups for iOS and Android (including a dark
+  variant), defines design tokens before screens, covers empty and filled states, renders PNGs, and
+  produces a handoff zip with PROMPT.md (paste-in prompt, fixed decisions incl. offline and no
+  accounts, screens table, milestones with checks), SETUP.md and DESIGN-TOKENS.md.

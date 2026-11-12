@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: arabic-rtl-medicine-search
+expected_outcome: |
+  An English (LTR) and an Arabic (RTL, mirrored, Arabic font) mockup of the search screen, and a
+  Python normalization function with passing tests: Arabic-Indic digits to ASCII, diacritics and
+  tatweel stripped, invisible bidi marks removed, and letter variants folded (أ/إ/آ→ا, ى→ي, ة→ه)
+  for the search key only, without raw invisible characters in the source.

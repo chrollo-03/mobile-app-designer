@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: check-broken-design-file
+context:
+  scaffold_script: place-files.sh
+expected_outcome: |
+  Without FigCraft running, the run reads the .figcraft (a zip with document.json) and reports
+  exactly the three real problems: the Android Detail screen is missing, Android Settings is
+  412x900 instead of 412x917, and iOS Detail has no prototype link leading to it. It does not
+  report problems that aren't there.
