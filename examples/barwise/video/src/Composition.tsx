@@ -3,6 +3,7 @@ import { DURATION, Walkthrough } from "./Walkthrough";
 import { MAKING_OF_DURATION, MakingOf } from "./MakingOf";
 import { TL_DURATION, Timelapse } from "./Timelapse";
 import { BRAG_DURATION, Brag } from "./Brag";
+import { REEL_DURATION, Reel } from "./Reel";
 
 export const MyComposition = () => {
   return (
@@ -14,6 +15,14 @@ export const MyComposition = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      <Composition
+        id="InstagramReel"
+        component={Reel}
+        durationInFrames={REEL_DURATION}
+        fps={30}
+        width={1080}
+        height={1920}
       />
       <Composition
         id="Brag"

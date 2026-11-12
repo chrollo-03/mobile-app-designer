@@ -1,0 +1,8 @@
+I typed one line into Claude Code: "design a lifting tracker for iOS and Android."
+
+It opened a real design tool and built 16 screens live, iOS and Android, dark mode, a prototype you can tap through and an app icon. Then it checked its own work: 137 design checks passed, 0 contrast issues.
+
+It's a free, open-source skill. Install it with one command:
+npx skills add chrollo-03/mobile-app-designer
+
+#claudecode #claude #ai #uidesign #appdesign #mobiledesign #iosdesign #androiddesign #figma #buildinpublic

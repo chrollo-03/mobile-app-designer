@@ -12,7 +12,7 @@ The frames are the real FigCraft screens exported at 3x and animated with
 - `barwise-making-of.mp4` / `.gif`: 29 s timelapse of Claude Code rebuilding the Rest screen in FigCraft over MCP, from 12 real captures of the FigCraft window (`build-frames/`)
 - `barwise-walkthrough.mp4`: 1920 x 1080, 30 fps, H.264
 - `barwise-walkthrough.gif`: 720 px preview for the README
-- `src/`: the Remotion compositions (`Walkthrough.tsx`, `MakingOf.tsx`, `Timelapse.tsx`, `Composition.tsx`)
+- `src/`: the Remotion compositions (`Walkthrough.tsx`, `MakingOf.tsx`, `Timelapse.tsx`, `Brag.tsx`, `Reel.tsx`, `Composition.tsx`), the reel's voice script (`reel-tts.mjs`, Kokoro) and the synthesized music (`brag-music.py`, `reel-bed.py`)
 
 ## Render it yourself
 

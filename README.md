@@ -27,6 +27,15 @@ npx skills add https://github.com/chrollo-03/mobile-app-designer --skill mobile-
 
 [Watch with sound (20 s, MP4)](brag-output/brag.mp4). Made with [/brag-slim](https://github.com/latent-spaces/brag): the soundtrack is synthesized in code on the same 120 BPM grid as the cuts.
 
+## Instagram reel
+
+<a href="brag-output/instagram-reel.mp4"><img src="brag-output/instagram-reel-cover.jpg" alt="Instagram reel cover" width="270"></a>
+
+[Watch the reel (33 s, vertical, with voice)](brag-output/instagram-reel.mp4). The voice is
+[Kokoro](https://github.com/hexgrad/kokoro), an open-source text-to-speech model run locally, over word-by-word captions,
+the real screens and the real screen recording. Caption ready to post:
+[`instagram-caption.txt`](brag-output/instagram-caption.txt).
+
 ## Made with this skill: Barwise
 
 Barwise is a lifting tracker designed from a one-line idea by Claude Code with this skill,
