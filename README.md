@@ -21,6 +21,12 @@ npx skills add https://github.com/chrollo-03/mobile-app-designer --skill mobile-
 
 </div>
 
+## 20-second launch video
+
+[![Launch video: one prompt, 16 screens, 137 checks](brag-output/brag.jpg)](brag-output/brag.mp4)
+
+[Watch with sound (20 s, MP4)](brag-output/brag.mp4). Made with [/brag-slim](https://github.com/latent-spaces/brag): the soundtrack is synthesized in code on the same 120 BPM grid as the cuts.
+
 ## Made with this skill: Barwise
 
 Barwise is a lifting tracker designed from a one-line idea by Claude Code with this skill,

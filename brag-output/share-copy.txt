@@ -1,0 +1,1 @@
+I gave Claude Code one prompt and a design tool. It came back with 16 iOS and Android screens, a clickable prototype, an app icon and 137 passing design checks. It's a free skill: npx skills add chrollo-03/mobile-app-designer
