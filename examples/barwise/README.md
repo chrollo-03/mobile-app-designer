@@ -13,8 +13,8 @@ Offline first, no account needed.
 ## What's in the file
 - **Page `Screens`**: `iOS / N Name` (390 x 844) and `Android / N Name` (412 x 917):
   1 Today, 2 Workout, 3 Rest, 4 Summary, 5 Progress, 6 Settings, 7 History, 8 Workout · dark.
-- **Page `Logo`**: the 1024 px app icon and the `Logo / mark` frame (barbell with a lime
-  "progress" dot).
+- **Page `Logo`**: the 1024 px app icon and the `Logo / mark` frame (white barbell with a
+  green "progress" dot on electric blue).
 - **Prototype**: Start workout → Workout → Log set → Rest → Skip rest → Workout → Finish →
   Summary → Save workout → Today, plus every tab, on both platforms.
 
@@ -30,8 +30,8 @@ Offline first, no account needed.
   and the bottom button repeats exactly what will be logged ("Log set 3 · 82.5 kg × 6").
 - **"Previous" column**: last session's numbers sit next to today's inputs, so progressive
   overload needs no memory.
-- **Records get their own colour**: lime is used only for done sets and new records, so it
-  always means "good news".
+- **Records get their own colour**: green is used only for done sets and new records, so it
+  always means "good news". Every action is the same electric blue.
 - **Rest is dark on purpose**: the screen people stare at between sets is calm and readable
   from a distance.
 - **Platform fit**: iOS tab bar with home indicator and 44 pt targets; Android navigation bar
@@ -40,13 +40,16 @@ Offline first, no account needed.
 ## Colour tokens
 | Role | Light | Dark |
 |---|---|---|
-| Background | `#F4F3EF` | `#0E0F11` |
-| Surface | `#FFFFFF` | `#1A1B1F` |
-| Text | `#111214` | `#F2F2F3` |
-| Text, secondary | `#5B5E66` | `#A3A6AE` |
-| Primary (actions) | `#C2410C` | `#FF8A4C` |
-| Hero / rest | `#17181C` | `#17181C` |
-| Record / done | `#D9F99D` on `#1A2E05` | same |
+| Background | `#F5F6F8` | `#07080B` |
+| Surface | `#FFFFFF` | `#151821` |
+| Text | `#0B0D12` | `#F2F2F3` |
+| Text, secondary | `#5A6170` | `#A3AAB8` |
+| Action (buttons, active tab) | `#2F5BFF` | `#2F5BFF` |
+| Action text on dark | | `#7C9BFF` |
+| Hero / rest | `#0B0D12` | `#0B0D12` |
+| Done / record | `#22C55E` with `#052E16` text | same |
+
+One accent colour for every action, green only for good news, cool greys for everything else.
 
 Font: Inter on both platforms.
 
