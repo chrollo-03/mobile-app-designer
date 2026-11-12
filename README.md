@@ -14,6 +14,10 @@ The example above, [`examples/barwise`](examples/barwise), was designed with thi
 FigCraft: a lifting tracker with 16 screens, a clickable prototype and an app icon. It passes
 every check the skill ships with.
 
+![Barwise prototype walkthrough](examples/barwise/video/barwise-walkthrough.gif)
+
+[Watch the 33 s walkthrough (MP4)](examples/barwise/video/barwise-walkthrough.mp4), made with Remotion from the real FigCraft screens.
+
 ## What you get
 
 - **A workflow** (`SKILL.md`) that asks the decisions only you can make (platforms, languages,

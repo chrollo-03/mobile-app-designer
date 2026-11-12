@@ -5,6 +5,10 @@ prototype, an app icon and a checker spec. All names and numbers are made up.
 
 ![Overview](screens/_overview.png)
 
+**Prototype walkthrough** ([MP4, 33 s](video/barwise-walkthrough.mp4)):
+
+![Barwise prototype walkthrough](video/barwise-walkthrough.gif)
+
 ## Brief
 Log strength workouts fast, between sets, with one hand. Plan today's session, log weight and
 reps per set, rest with a timer, see new records at the end, and track strength over months.
